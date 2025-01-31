@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="estilos/estilos.css">
+    <script src="js/clases.js"></script>
+    <script src="js/sistema.js"></script>
+    <script src="js/codigo.js"></script>
+
+</head>
+    <body>
+        <div id="divContenedor">
+
+            <header>
+                <img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBRWovuUPFEU2kx5mlt5sjfigAccmFr8Jq8w&s" alt="logo"/>
+                <nav>
+                    <!-- menú navbar principal -->
+                    <ul id="navPrincipal">
+                        <!-- botones del Usuario cliente -->
+                        <li id="btnSecExplorarDestinos" class="btnSeccion cliente"><a>Explorar destinos</a></li>
+                        <li id="btnSecHistorialReservas" class="btnSeccion cliente"><a>Historial reservas</a></li>
+                        <li id="btnSecVerDestinosOferta" class="btnSeccion cliente"><a>Ofertas</a></li>
+
+                        <!-- botones del Usuario administrador -->
+                        <li id="btnSecListarReservas" class="btnSeccion admin"><a>Listar reservas</a></li>
+                        <li id="btnSecAgregarDestinos" class="btnSeccion admin"><a>Agregar destino</a></li>
+                        <li id="btnSecAministrarDestinos" class="btnSeccion admin"><a>Administrar destino</a></li>
+                        <li id="btnSecInformeGanancias" class="btnSeccion admin"><a>Informe ganancias</a></li>
+
+                        <li id="menuSalir"><a>Salir</a></li>                        
+                        
+                    </ul>
+
+                    <!-- se muestra el nombre y millas disponibles del usuario logeado -->
+                    <div id="aux">
+                        <p id="nombreUsuarioLogeado"></p>
+                        <p id="saldoMillas"></p>
+                    </div>
+                </nav>
+            </header>
+
+            <main>
+                <!-- sección del formulario de inicio de sesión -->
+                <section id="secInicioSesion" class="seccion">
+
+                    <h2>Inicio de sesión</h2>
+
+                    <form id="formInicioSesion">
+
+                        <label for="txtUsuarioLogIn">Nombre de usuario:</label>
+                        <input type="text" id="txtUsuarioLogIn">
+                        <br><br>
+
+                        <!-- modificar a password -->
+                        <label for="pswPasswordLogIn">Contraseña:</label>
+                        <input type="password" id="pswPasswordLogIn">
+                        <br><br>
+
+                        <input type="button" value="Iniciar Sesión" id="btnIniciarSesion"><br>
+
+                        <p id="mensajeInicioSesion"></p>
+
+                    </form>
+
+                </section>
+                
+                <!-- sección del formulario de registro del cliente -->
+                <section id="secRegistroCliente" class="seccion">
+
+                    <h2>Registro de cliente</h2>
+
+                    <form id="formRegistroCliente">
+
+                        <label for="txtNombreRegistro">Nombre: </label>
+                        <input type="text" id="txtNombreRegistro"><br>
+
+                        <label for="txtApellidoRegistro">Apellido: </label>
+                        <input type="text" id="txtApellidoRegistro"><br>
+
+                        <label for="txtNombreUsuarioRegistro">Nombre de usuario: </label>
+                        <input type="text" id="txtNombreUsuarioRegistro"><br>
+
+                        <label for="pswPasswordRegistro">Contraseña: </label>
+                        <input type="password" id="pswPasswordRegistro"><br>
+
+                        <label for="txtTarjetaRegistro">Número de tarjeta de crédito: </label>
+                        <input type="text" id="txtTarjetaRegistro" placeholder="1234-5678-9012-3456">
+
+                        <label for="txtCVCRegistro">CVC: </label>
+                        <input type="text" id="txtCVCRegistro" placeholder="123"><br><br>
+
+                        <input type="button" value="Registrarse" id="btnRegistrar"><br>
+
+                        <p id="mensajeRegistro"></p>
+
+                    </form>
+
+                </section>
+               
+                <!-- sección de explorar destinos disponibles -->
+                <section id="secExplorarDestinos" class="seccion">
+
+                    <h2>Explorar destinos disponibles</h2>
+              
+                    <table id="tblExplorarDestinos">
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Nombre del destino</th>
+                                <th>Descripción</th>
+                                <th>Precio por persona</th>
+                                <th>Oferta</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <!-- se carga desde JS -->
+                        <tbody id="tblExplorarDestinosBody"></tbody>
+                    </table>
+
+                </section>
+                
+                <!-- sección de formulario de Reserva -->
+                <section id="secReservarDestino" class="seccion">
+
+                    <h2>Reservar destino</h2>
+                    
+                    <form id="formReservaDestino">
+
+                        <!-- nombre destino el cual se carga desde JS -->
+                        <label for="txtNombreDestinoReserva">Destino:</label>
+                        <input type="text" id="txtNombreDestinoReserva">
+                        <br><br>
+
+                        <!-- Cantidad de personas -->
+                        <label for="numCantidadPersonasReserva">Cantidad de Personas:</label>
+                        <input type="number" id="numCantidadPersonasReserva">
+                        <br><br>
+                
+                        <!-- Medio de pago -->
+                        <label for="slcMedioPagoReserva">Medio de Pago:</label>
+                        <select id="slcMedioPagoReserva">
+                            <option value="">Seleccione un medio de pago...</option>
+                            <option value="dinero">Dinero</option>
+                            <option value="millas">Millas</option>
+                        </select>
+                        <br><br>
+
+                        <p id="pMillasDisponibles"></p>
+                        <p id="pDineroDisponible"></p>
+                        <br>
+                        <!-- Botón de reservar -->
+                        <input type="button" value="Reservar" id="btnReservar">
+                        
+                        <!-- Mensajde para validaciones -->
+                        <p id="mensajeReserva"></p>
+
+                    </form>
+
+                </section>
+                
+                <!-- sección de ver historial de reservas -->
+                <section id="secHistorialReservas" class="seccion">
+
+                    <h2>Historial de reservas</h2>
+
+                    <!-- mensaje si no hay reservas del Usuario -->
+                    <p id="pMensajeHistorialReserva"></p>
+                 
+                    <table id="tblHistorialReservas">
+                        <thead>
+                            <tr>
+                                <th>Nombre destino</th>
+                                <th>Cantidad de personas</th>
+                                <th>Monto total</th>
+                                <th>Estado</th>
+                                <th>Imagen</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <!-- se carga desde JS -->
+                        <tbody id="tblHistorialReservasBody"></tbody>
+
+                    </table>
+      
+                </section>
+
+                <!-- sección de ver destinos en oferta -->
+                <section id="secVerDestinosOferta" class="seccion">
+
+                    <h2>Destinos de oferta</h2>
+
+                    <!-- Mensaje si no hay destinos en oferta -->
+                    <p id="pMensajeOfertas"></p>
+                    
+                        <table id="tblExplorarDestinosOferta">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre del destino</th>
+                                    <th>Descripción</th>
+                                    <th>Precio por persona</th>
+                                    <th>Oferta</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <!-- se carga desde JS -->
+                            <tbody id="tblExplorarDestinosOfertaBody"></tbody>
+                        </table>
+      
+                </section>
+
+                <!-- sección de listar reservas -->
+                <section id="secListarReservas" class="seccion">
+
+                    <h2>Reservas pendientes</h2>
+
+                    <table id="tablaReservasPendientes">
+                        <thead>
+                            <tr>
+                                <th>Nombre del cliente/usuario</th>
+                                <th>Destino reservado</th>
+                                <th>Cantidad de personas</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <!-- se carga desde JS -->
+                        <tbody id="tblReservasPendientes"></tbody>
+                    </table>
+
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+
+                    <h2>Reservas aprobadas</h2>
+
+                    <div class="reservas__contenedor" id="divReservasAprobadas">
+                        <table id="tablaReservasAprobadas">
+                            <thead>
+                                <tr>
+                                    <th>Nombre del cliente/usuario</th>
+                                    <th>Destino reservado</th>
+                                    <th>Cantidad de personas</th>
+                                </tr>
+                            </thead>
+                            <!-- se carga desde JS -->
+                            <tbody id="tblReservasAprobadas"></tbody>
+                        </table>
+                    </div>
+
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+
+                    <h2>Reservas canceladas</h2>
+
+                    <table class="tabla" id="tablaReservasCanceladas">
+                        <thead>
+                            <tr>
+                                <th>Nombre del cliente/usuario</th>
+                                <th>Destino reservado</th>
+                                <th>Cantidad de personas</th>
+                            </tr>
+                        </thead>
+                        <!-- se carga desde JS -->
+                        <tbody id="tblReservasCanceladas"></tbody>
+                    </table>
+
+                </section>
+                
+                <!-- sección de formulario agregar destinos -->
+                <section id="secAgregarDestinos" class="seccion">
+
+                    <h2>Agregar destino</h2>
+
+                    <form id="formAgregarDestinos">
+
+                        <label for="txtDestinoAgregar">Nombre del destino:</label>
+                        <input type="text" id="txtDestinoAgregar">
+                        <br><br>
+
+                        <label for="numPrecioPorPersonaAgregar">Precio por persona:</label>
+                        <input type="text" id="numPrecioPorPersonaAgregar">
+                        <br><br>
+
+                        <label for="txtDescripcionAgregar">Descripción:</label>
+                        <input type="textarea" id="txtDescripcionAgregar">
+                        <br><br>
+
+                        <label for="fileImagenAgregar">Imagen:</label>
+                        <input type="file" id="fileImagenAgregar">
+                        <br><br>
+                
+                        <label for="numCuposDisponiblesAgregar">Cupos disponibles:</label>
+                        <input type="number" id="numCuposDisponiblesAgregar">
+                        <br><br>
+
+                        <input type="button" value="Agregar" id="btnAgregarDestino">
+
+                        <!-- parrafo para mensajes de validaciones -->
+                        <p id="pMensajeAgregarDestino"></p>
+
+                    </form>
+
+                </section>
+                
+                <!-- sección de administrar destinos por Administrador -->
+                <section id="secAministrarDestinos" class="seccion">
+
+                    <h2>Administrar destinos</h2>
+
+                    <table id="tblAdministrarDestinos">
+                        <thead>
+                            <tr>
+                                <th>Destino</th>
+                                <th>Stock de cupos</th>
+                                <th>Modificar cupos</th>
+                                <th>Estado actual</th>
+                                <th>Modificar estado</th>
+                                <th>Oferta</th>
+                                <th>Modificar oferta</th>
+                                <th>Procesar</th>
+                            </tr>
+                        </thead>
+                        <!-- se carga desde JS -->
+                        <tbody id="tblAdministrarDestinosBody">
+                        </tbody>
+                    </table>
+
+                </section>
+                
+                <!-- sección de informe de ganancias -->
+                <section id="secInformeGanancias" class="seccion">
+
+                    <h2>Informe de ganancias</h2>
+
+                    <!-- se muestra el monto total de reservas confirmadas pagadas con dinero y/o millas -->
+                    <h3 id="totalReservasConfirmadas"></h3>
+
+                        <table id="tblGanancias">
+                            <thead>
+                                <tr>
+                                    <th>Destino</th>
+                                    <th>Cantidad de personas</th>
+                                    <th>Total de ganancias</th>
+                                </tr>
+                            </thead>
+                            <!-- se carga desde js -->
+                            <tbody id="tblGananciasBody">
+                            </tbody>
+                        </table>
+
+                </section>
+
+            </main>
+
+            <footer>
+                <a href="https://www.ort.edu.uy">ORT</a>
+            </footer>
+              <!-- FIN PIE -->
+        </div>
+
+    </body>
+</html>
